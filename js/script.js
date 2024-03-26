@@ -106,7 +106,6 @@ btnLogin.addEventListener("click", function (e) {
   if(user?.pin === Number(passLogin.value)) {
     textLabel.textContent = `${user.owner}`
     dataBox.classList.remove('d-none')
-    alert('Welcom')
   }else{
     alert('user&pass')
   }
