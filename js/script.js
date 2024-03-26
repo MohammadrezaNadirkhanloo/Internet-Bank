@@ -29,6 +29,7 @@ const accounts = [account1, account2, account3, account4];
 //DOM
 const listGroup = document.querySelector(".list-group");
 const labelBalance = document.querySelector(".balance");
+const summary= document.querySelector(".summary_value")
 
 //Code
 const displayList = function (account) {
@@ -75,3 +76,10 @@ const allMany = function (item) {
 };
 
 allMany(account1.movements);
+
+const checkSummary=function(data){
+  const check = data.filter((item)=> item >0).reduce((acc,dataFilter)=> acc + dataFilter)
+  summary.textContent=`${check} €`
+}
+
+checkSummary(account1.movements)
