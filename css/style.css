@@ -30,7 +30,7 @@ body {
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 5px;
-margin: 10px 0px;
+  margin: 10px 0px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -46,11 +46,11 @@ margin: 10px 0px;
   background: #2d2d2d;
 }
 
-p{
+p {
   margin: 0;
 }
 
-.text_li{
+.text_li {
   font-size: 14px;
   font-weight: bold;
 }

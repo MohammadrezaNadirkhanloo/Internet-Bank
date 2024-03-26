@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="icon/bootstrap-icons.min.css" />
-    <link rel="icon" type="image/png" href="image/bootstrap-logo.png">
-    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="image/bootstrap-logo.png" />
+    <meta name="description" content="" />
   </head>
   <body>
     <header>
@@ -41,7 +41,7 @@
         </div>
       </nav>
     </header>
-    <main class="app mt-5">
+    <main class="app mt-2 min-vh-100 d-flex align-items-center">
       <div class="container">
         <div class="row g-4">
           <div class="col-12">
@@ -153,22 +153,63 @@
               </div>
             </div>
           </div>
-          <div class="col-12 order-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center fw-bold text-secondary gap-4">
-                <p>IN <span class="text-success fs-3 summary_value">0000€</span></p>
-                <p>OUT <span class="text-danger fs-3">0000€</span></p>
-                <p>INTEREST <span class="text-success fs-3">0000€</span></p>
-                <button class="btn btn-light fw-bold">SORT<i class="bi bi-arrow-down-up"></i></button>
+          <div class="col-12 order-3 mb-4">
+            <div class="row g-3 align-items-center justify-content-between">
+              <div class="col-lg-8">
+                <div
+                  class="row text-center g-3 align-items-center fw-bold text-secondary"
+                >
+                  <div class="col-sm-3 col-6">
+                    <p>
+                      IN
+                      <span class="text-success fs-3 summary_value">0000€</span>
+                    </p>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <p>OUT <span class="text-danger fs-3">0000€</span></p>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <p>INTEREST <span class="text-success fs-3">0000€</span></p>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <button class="btn btn-light fw-bold shadow-sm">
+                      SORT<i class="bi bi-arrow-down-up"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div class="fw-bold text-secondary">
-                <p>You will be logged out in <span class="text-dark fs-5">05:00</span></p>
+              <div class="col-lg-4">
+                <div class="fw-bold text-secondary text-center">
+                  <p>
+                    You will be logged out in
+                    <span class="text-dark fs-5">05:00</span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+    <footer class="d-flex justify-content-center p-3 border-top">
+      <ul class="nav list-unstyled">
+        <li class="ms-3">
+          <a class="text-body-secondary" href="https://t.me/+989222032902"
+            ><i class="bi bi-telegram"></i
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-body-secondary" href="https://github.com/mrkhanloo"
+            ><i class="bi bi-github"></i
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-body-secondary" href="mailto:m.nadirkhanloo1380@gmail.com"
+            ><i class="bi bi-google"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
     <script src="js/script.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
