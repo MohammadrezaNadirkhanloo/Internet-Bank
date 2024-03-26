@@ -29,8 +29,9 @@ const accounts = [account1, account2, account3, account4];
 //DOM
 const listGroup = document.querySelector(".list-group");
 const labelBalance = document.querySelector(".balance");
-const summary= document.querySelector(".summary_value")
-
+const summary = document.querySelector(".summary_value");
+const sumOut = document.querySelector(".sumOut");
+const sumINTEREST = document.querySelector(".sumINTEREST");
 //Code
 const displayList = function (account) {
   listGroup.innerHTML = "";
@@ -77,9 +78,20 @@ const allMany = function (item) {
 
 allMany(account1.movements);
 
-const checkSummary=function(data){
-  const check = data.filter((item)=> item >0).reduce((acc,dataFilter)=> acc + dataFilter)
-  summary.textContent=`${check} €`
-}
+const checkSummary = function (data) {
+  const check = data.movements
+    .filter((item) => item > 0)
+    .reduce((acc, dataFilter) => acc + dataFilter, 0);
+  summary.textContent = `${check} €`;
+  const checkOut = data.movements
+    .filter((item) => item < 0)
+    .reduce((acc, dataFilter) => acc + dataFilter, 0);
+  sumOut.textContent = `${checkOut} €`;
+  const checkINTEREST = data.movements
+    .filter((item) => item > 0)
+    .map((newData) => (newData * data.interestRate) / 100)
+    .reduce((acc, dataFilter) => acc + dataFilter);
+  sumINTEREST.textContent = `${checkINTEREST} €`;
+};
 
-checkSummary(account1.movements)
+checkSummary(account1);
