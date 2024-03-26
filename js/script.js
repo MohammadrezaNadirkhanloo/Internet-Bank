@@ -23,7 +23,6 @@ const account4 = {
   interestRate: 1,
   pin: 4444,
 };
-
 const accounts = [account1, account2, account3, account4];
 
 //DOM
@@ -32,7 +31,12 @@ const labelBalance = document.querySelector(".balance");
 const summary = document.querySelector(".summary_value");
 const sumOut = document.querySelector(".sumOut");
 const sumINTEREST = document.querySelector(".sumINTEREST");
-//Code
+const btnLogin = document.querySelector(".login__btn");
+const userLogin = document.querySelector(".login_user");
+const passLogin = document.querySelector(".login_pass");
+const textLabel = document.querySelector('.welcom')
+const dataBox = document.querySelector('.box_data')
+//Code JS
 const displayList = function (account) {
   listGroup.innerHTML = "";
   account.forEach((element, index) => {
@@ -78,7 +82,7 @@ const allMany = function (item) {
 
 allMany(account1.movements);
 
-const checkSummary = function (data) {
+const checkSum = function (data) {
   const check = data.movements
     .filter((item) => item > 0)
     .reduce((acc, dataFilter) => acc + dataFilter, 0);
@@ -94,4 +98,16 @@ const checkSummary = function (data) {
   sumINTEREST.textContent = `${checkINTEREST} €`;
 };
 
-checkSummary(account1);
+checkSum(account1);
+
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  const user = accounts.find((item) => item.username === userLogin.value);
+  if(user?.pin === Number(passLogin.value)) {
+    textLabel.textContent = `${user.owner}`
+    dataBox.classList.remove('d-none')
+    alert('Welcom')
+  }else{
+    alert('user&pass')
+  }
+});
