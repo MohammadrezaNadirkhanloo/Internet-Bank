@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bankist</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="icon/bootstrap-icons.min.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar border-bottom rounded-3 border-dark-subtle shadow">
+        <div
+          class="container-fluid container-xxl flex-column flex-sm-row gap-2"
+        >
+          <div>
+            <a class="navbar-brand fw-bold fs-4 welcom"
+              >Login in to get started</a
+            >
+          </div>
+          <div><i class="bi bi-bank h2"></i></div>
+          <form class="d-flex login" style="width: 260px">
+            <input
+              class="form-control me-2 text-center rounded-pill login_user"
+              type="text"
+              placeholder="user"
+            />
+            <input
+              class="form-control me-2 text-center rounded-pill login_pass"
+              type="password"
+              placeholder="password"
+            />
+            <button class="btn btn-outline-light btn-sm login__btn">
+              <i class="bi bi-box-arrow-in-right text-dark h4"></i>
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main class="app mt-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="">
+                <p class="fs-3 fw-bold">Current balance</p>
+                <p class="fw-bolder text-secondary">
+                  AS of <span>25/03/2024</span>
+                </p>
+              </div>
+              <p class="fw-bold fs-1 balance">0000€</p>
+            </div>
+          </div>
+          <div class="col-lg-8 order-2 order-lg-1">
+            <div
+              class="bg-white rounded-4 shadow overflow-auto"
+              style="height: 610px"
+            >
+              <ul class="list-group list-group-flush rounded-4">
+                <li class="list-group-item py-3 px-5">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 d-flex gap-5 align-items-center">
+                      <p
+                        class="text_li px-2 py-1 rounded-pill bg-success bg-gradient"
+                      >
+                        2 deposit
+                      </p>
+                      <p class="text_li text-secondary">3 days ago</p>
+                    </div>
+                    <div>
+                      <p class="fs-4 fw-bold">4 000€</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item py-3 px-5">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 d-flex gap-5 align-items-center">
+                      <p
+                        class="text_li px-2 py-1 rounded-pill bg-danger bg-gradient"
+                      >
+                        1 withdrawal
+                      </p>
+                      <p class="text_li text-secondary">25/03/2024</p>
+                    </div>
+                    <div>
+                      <p class="fs-4 fw-bold">-378€</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 order-1 order-lg-2">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="p-5 bg-warning bg-gradient rounded-5">
+                  <p class="fw-bold fs-4 mb-3">Transfer money</p>
+                  <form class="d-flex gap-2">
+                    <input
+                      class="form-control fw-bold bg-warning-subtle"
+                      type="text"
+                      placeholder="Transfer to"
+                    />
+                    <input
+                      class="form-control fw-bold bg-warning-subtle"
+                      type="number"
+                      placeholder="Amount"
+                    />
+                    <button class="btn btn-warning p-1">
+                      <i class="bi bi-arrow-right-circle h4"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="p-5 bg-success rounded-5">
+                  <p class="fw-bold fs-4 mb-3">Request loan</p>
+                  <form class="d-flex gap-2">
+                    <input
+                      class="form-control fw-bold bg-success-subtle"
+                      type="number"
+                      placeholder="Amount"
+                    />
+                    <button class="btn btn-success p-1">
+                      <i class="bi bi-arrow-right-circle h4 text-dark"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="p-5 bg-danger rounded-5">
+                  <p class="fw-bold fs-4 mb-3">Close account</p>
+                  <form class="d-flex gap-2">
+                    <input
+                      class="form-control fw-bold bg-danger-subtle"
+                      type="text"
+                      placeholder="Confirm user"
+                    />
+                    <input
+                      class="form-control fw-bold bg-danger-subtle"
+                      type="number"
+                      placeholder="Confirm PIN"
+                    />
+                    <button class="btn btn-danger p-1">
+                      <i class="bi bi-arrow-right-circle h4 text-dark"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 order-3">t</div>
+        </div>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
