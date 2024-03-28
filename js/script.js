@@ -1,7 +1,7 @@
 //Data
 const account1 = {
   owner: "MohammadReza Nadirkhanloo",
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300, -580],
   interestRate: 1.2,
   pin: 1111,
 };
@@ -34,12 +34,18 @@ const sumINTEREST = document.querySelector(".sumINTEREST");
 const btnLogin = document.querySelector(".login__btn");
 const userLogin = document.querySelector(".login_user");
 const passLogin = document.querySelector(".login_pass");
-const textLabel = document.querySelector('.welcom')
-const dataBox = document.querySelector('.box_data')
+const textLabel = document.querySelector(".welcom");
+const dataBox = document.querySelector(".box_data");
+const inputTransfer = document.querySelector(".input_transfer");
+const inputAmount = document.querySelector(".input_amount");
+const btnTransfer = document.querySelector(".btn_transfer");
+const userDelete = document.querySelector(".input_delete_user");
+const passwordDelete = document.querySelector(".input_delete_pass");
+const btnDelete = document.querySelector(".btn_delete");
 //Code JS
 const displayList = function (account) {
   listGroup.innerHTML = "";
-  account.forEach((element, index) => {
+  account.movements.forEach((element, index) => {
     const bg = element > 0 ? "success" : "danger";
     const text = element > 0 ? "deposit" : "withdrawal";
     const html = `
@@ -61,12 +67,11 @@ const displayList = function (account) {
     listGroup.insertAdjacentHTML("afterbegin", html); // beforeend
   });
 };
-displayList(account1.movements);
 
 const createUserName = function (arr) {
   arr.forEach((item) => {
     item.username = item.owner
-      .toUpperCase()
+      .toLowerCase()
       .split(" ")
       .map((item) => item[0])
       .join("");
@@ -76,11 +81,9 @@ const createUserName = function (arr) {
 createUserName(accounts);
 
 const allMany = function (item) {
-  const balance = item.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  item.balance = item.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${item.balance} EUR`;
 };
-
-allMany(account1.movements);
 
 const checkSum = function (data) {
   const check = data.movements
@@ -95,18 +98,63 @@ const checkSum = function (data) {
     .filter((item) => item > 0)
     .map((newData) => (newData * data.interestRate) / 100)
     .reduce((acc, dataFilter) => acc + dataFilter);
-  sumINTEREST.textContent = `${checkINTEREST} €`;
+
+  sumINTEREST.textContent = `${checkINTEREST.toFixed(2)} €`;
 };
 
-checkSum(account1);
+const updateUI = function (account) {
+  checkSum(account);
+  allMany(account);
+  displayList(account);
+};
 
+let userName;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
   const user = accounts.find((item) => item.username === userLogin.value);
-  if(user?.pin === Number(passLogin.value)) {
-    textLabel.textContent = `${user.owner}`
-    dataBox.classList.remove('d-none')
-  }else{
-    alert('user&pass')
+  if (user?.pin === Number(passLogin.value)) {
+    textLabel.textContent = `${user.owner}`;
+    textLabel.classList.add('f_Ballistic')
+    dataBox.classList.remove("d-none");
+    userLogin.value = passLogin.value = "";
+    updateUI(user);
+    userName = user;
+  } else {
+    alert("Wrong username or password");
+  }
+});
+
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  const many = inputAmount.value;
+
+  const receive = accounts.find(
+    (item) => item.username === inputTransfer.value
+  );
+  if (receive && userName.balance >= many) {
+    userName.movements.push(Number(-many));
+    updateUI(userName);
+    receive.movements.push(Number(many));
+    inputTransfer.value = inputAmount.value = "";
+  } else {
+    alert("error");
+  }
+});
+
+btnDelete.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    userDelete.value === userName.username &&
+    Number(passwordDelete.value) === userName.pin
+  ) {
+    const indexUser = accounts.findIndex(
+      (item) => item.username === userDelete.value
+    );
+    accounts.splice(indexUser, 1);
+    dataBox.classList.add("d-none");
+    textLabel.classList.remove('f_Ballistic')
+    textLabel.textContent = "Login in to get started";
+  } else {
+    alert("error");
   }
 });
