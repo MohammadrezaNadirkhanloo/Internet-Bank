@@ -42,8 +42,12 @@ const btnTransfer = document.querySelector(".btn_transfer");
 const userDelete = document.querySelector(".input_delete_user");
 const passwordDelete = document.querySelector(".input_delete_pass");
 const btnDelete = document.querySelector(".btn_delete");
+const inputrequest = document.querySelector(".input_request");
+const btnrequest = document.querySelector(".btn_request");
+const btnSort = document.querySelector(".btn_sort");
+
 //Code JS
-const displayList = function (account) {
+const displayList = function (account, sort = false) {
   listGroup.innerHTML = "";
   account.movements.forEach((element, index) => {
     const bg = element > 0 ? "success" : "danger";
@@ -64,7 +68,9 @@ const displayList = function (account) {
     </div>
   </li>
     `;
-    listGroup.insertAdjacentHTML("afterbegin", html); // beforeend
+    sort
+      ? listGroup.insertAdjacentHTML("afterbegin", html)
+      : listGroup.insertAdjacentHTML("beforeend", html);
   });
 };
 
@@ -114,7 +120,7 @@ btnLogin.addEventListener("click", function (e) {
   const user = accounts.find((item) => item.username === userLogin.value);
   if (user?.pin === Number(passLogin.value)) {
     textLabel.textContent = `${user.owner}`;
-    textLabel.classList.add('f_Ballistic')
+    textLabel.classList.add("f_Ballistic");
     dataBox.classList.remove("d-none");
     userLogin.value = passLogin.value = "";
     updateUI(user);
@@ -141,6 +147,19 @@ btnTransfer.addEventListener("click", function (e) {
   }
 });
 
+btnrequest.addEventListener("click", function (e) {
+  e.preventDefault();
+  const valueInt = Number(inputrequest.value);
+  const check = userName.movements.some((item) => item >= valueInt * 0.6);
+  inputrequest.value = "";
+  if (check && valueInt > 0) {
+    userName.movements.push(valueInt);
+    updateUI(userName);
+  } else {
+    alert("error");
+  }
+});
+
 btnDelete.addEventListener("click", function (e) {
   e.preventDefault();
   if (
@@ -152,9 +171,16 @@ btnDelete.addEventListener("click", function (e) {
     );
     accounts.splice(indexUser, 1);
     dataBox.classList.add("d-none");
-    textLabel.classList.remove('f_Ballistic')
+    textLabel.classList.remove("f_Ballistic");
     textLabel.textContent = "Login in to get started";
   } else {
     alert("error");
   }
+});
+
+let sort = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayList(userName, !sort);
+  sort = !sort;
 });
