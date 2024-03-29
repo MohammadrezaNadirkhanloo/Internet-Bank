@@ -45,6 +45,8 @@ const btnDelete = document.querySelector(".btn_delete");
 const inputrequest = document.querySelector(".input_request");
 const btnrequest = document.querySelector(".btn_request");
 const btnSort = document.querySelector(".btn_sort");
+const labelDate = document.querySelector(".label_date");
+const Timer = document.querySelector(".timer");
 
 //Code JS
 const displayList = function (account, sort = false) {
@@ -107,18 +109,38 @@ const checkSum = function (data) {
 
   sumINTEREST.textContent = `${checkINTEREST.toFixed(2)} €`;
 };
+const checkTimer = function () {
+  let time = 300;
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(Math.trunc(time % 60)).padStart(2, 0);
 
+    Timer.textContent = `${min}:${sec}`;
+    time--;
+    if (time === 0) {
+      clearInterval(timer);
+      dataBox.classList.add("d-none");
+      textLabel.classList.remove("f_Ballistic");
+      textLabel.textContent = "Login in to get started";
+    }
+  };
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
 const updateUI = function (account) {
   checkSum(account);
   allMany(account);
   displayList(account);
 };
 
-let userName;
+let userName, timer;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
   const user = accounts.find((item) => item.username === userLogin.value);
   if (user?.pin === Number(passLogin.value)) {
+    if (timer) clearInterval(timer);
+    timer = checkTimer();
     textLabel.textContent = `${user.owner}`;
     textLabel.classList.add("f_Ballistic");
     dataBox.classList.remove("d-none");
@@ -132,7 +154,7 @@ btnLogin.addEventListener("click", function (e) {
 
 btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
-  const many = inputAmount.value;
+  const many = Math.floor(inputrequest.value);
 
   const receive = accounts.find(
     (item) => item.username === inputTransfer.value
@@ -142,6 +164,8 @@ btnTransfer.addEventListener("click", function (e) {
     updateUI(userName);
     receive.movements.push(Number(many));
     inputTransfer.value = inputAmount.value = "";
+    clearInterval(timer);
+    timer = checkTimer();
   } else {
     alert("error");
   }
@@ -149,12 +173,14 @@ btnTransfer.addEventListener("click", function (e) {
 
 btnrequest.addEventListener("click", function (e) {
   e.preventDefault();
-  const valueInt = Number(inputrequest.value);
+  const valueInt = Math.floor(+inputrequest.value);
   const check = userName.movements.some((item) => item >= valueInt * 0.6);
   inputrequest.value = "";
   if (check && valueInt > 0) {
     userName.movements.push(valueInt);
     updateUI(userName);
+    clearInterval(timer);
+    timer = checkTimer();
   } else {
     alert("error");
   }
@@ -184,3 +210,18 @@ btnSort.addEventListener("click", function (e) {
   displayList(userName, !sort);
   sort = !sort;
 });
+
+const now = new Date();
+const option = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+};
+const local = navigator.language;
+
+labelDate.textContent = new Intl.DateTimeFormat(
+  navigator.language,
+  option
+).format(now);
