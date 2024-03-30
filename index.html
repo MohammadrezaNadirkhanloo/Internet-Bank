@@ -1,6 +1,6 @@
 <!-- MohammadReza Nadirkhanloo -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="image/bootstrap-logo.png" />
     <meta name="description" content="" />
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <header>
       <nav class="navbar border-bottom rounded-3 border-dark-subtle shadow">
         <div
@@ -47,14 +47,16 @@
       <div class="container d-none box_data">
         <div class="row g-4">
           <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="">
+            <div class="row justify-content-between align-items-center">
+              <div class="col-sm-auto col-12">
                 <p class="fs-3 fw-bold">Current balance</p>
                 <p class="fw-bolder text-secondary">
                   AS of <span class="label_date">25/03/2024</span>
                 </p>
               </div>
-              <p class="fw-bold fs-1 balance">0000€</p>
+              <div class="col-sm-auto col-12">
+                <p class="fw-bold fs-1 balance text-end">0000€</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-8 order-2 order-lg-1">
@@ -68,13 +70,10 @@
                     <div class="flex-grow-1 d-flex gap-5 align-items-center">
                       <p
                         class="text_li px-2 py-1 rounded-pill bg-success bg-gradient"
-                      >
-                        2 deposit
-                      </p>
-                      <p class="text_li text-secondary">3 days ago</p>
+                      ></p>
                     </div>
                     <div>
-                      <p class="fs-4 fw-bold">4 000€</p>
+                      <p class="fs-4 fw-bold"></p>
                     </div>
                   </div>
                 </li>
@@ -86,10 +85,9 @@
                       >
                         1 withdrawal
                       </p>
-                      <p class="text_li text-secondary">25/03/2024</p>
                     </div>
                     <div>
-                      <p class="fs-4 fw-bold">-378€</p>
+                      <p class="fs-4 fw-bold"></p>
                     </div>
                   </div>
                 </li>
@@ -168,10 +166,15 @@
                     </p>
                   </div>
                   <div class="col-sm-3 col-6">
-                    <p>OUT <span class="text-danger fs-3 sumOut">0000€</span></p>
+                    <p>
+                      OUT <span class="text-danger fs-3 sumOut">0000€</span>
+                    </p>
                   </div>
                   <div class="col-sm-3 col-6">
-                    <p>INTEREST <span class="text-success fs-3 sumINTEREST">0000€</span></p>
+                    <p>
+                      INTEREST
+                      <span class="text-success fs-3 sumINTEREST">0000€</span>
+                    </p>
                   </div>
                   <div class="col-sm-3 col-6">
                     <button class="btn btn-light fw-bold shadow-sm btn_sort">
@@ -193,7 +196,9 @@
         </div>
       </div>
     </main>
-    <footer class="d-flex justify-content-center p-3 border-top rounded-1 shadow-sm">
+    <footer
+      class="d-flex justify-content-center p-3 border-top rounded-1 shadow-sm"
+    >
       <ul class="nav list-unstyled">
         <li class="ms-3">
           <a class="text-body-secondary" href="https://t.me/+989222032902"
@@ -206,12 +211,89 @@
           ></a>
         </li>
         <li class="ms-3">
-          <a class="text-body-secondary" href="mailto:m.nadirkhanloo1380@gmail.com"
+          <a
+            class="text-body-secondary"
+            href="mailto:m.nadirkhanloo1380@gmail.com"
             ><i class="bi bi-google"></i
           ></a>
         </li>
       </ul>
     </footer>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn d-none btn_help"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Help...
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+              Bankist Help...
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text_style px-4 py-3">
+            <p class="fs-5 fw-bold">Welcome!</p>
+            <p class="mb-3">
+              This project functions like wallet applications; you can check
+              your account balance, send money to users, request loans, delete
+              your user account, and more. All these actions are possible with
+              this project.
+            </p>
+            <p class="fw-bold mb-1">
+              🛑 However, there are some rules for using this application:
+            </p>
+            <p>1 - You must log in to perform any operations.</p>
+            <p>
+              2 - If you are inactive for 5 minutes, your user will be
+              automatically logged out, and you will need to log in again.
+            </p>
+            <p>
+              3 - To request a loan, you must have at least 60% of the requested
+              amount in transactions for the loan request to be approved.
+            </p>
+
+            <p class="fw-bold mt-3">
+              🔒How to log in: To log in, you must enter a username and password
+              at the top of the site, such as:🔑
+            </p>
+            <pre>
+
+                mn - 1111
+                mk - 2222
+                ar - 3333
+                ak - 4444
+              </pre
+            >
+
+            <p class="mb-3 text-decoration-underline">
+              🚫 If you perform an incorrect action, an error message will be
+              displayed. 🚫
+            </p>
+
+            “Good luck!”👋
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="js/script.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>

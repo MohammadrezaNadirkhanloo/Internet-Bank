@@ -71,3 +71,7 @@ main {
 .f_Ballistic {
   font-family: Ballistic !important;
 }
+
+.text_style {
+  text-align: justify;
+}

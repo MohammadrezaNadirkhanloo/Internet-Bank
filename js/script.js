@@ -137,7 +137,8 @@ const updateUI = function (account) {
 let userName, timer;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
-  const user = accounts.find((item) => item.username === userLogin.value);
+  loginUsercheck = userLogin.value.toLowerCase().trim();
+  const user = accounts.find((item) => item.username === loginUsercheck);
   if (user?.pin === Number(passLogin.value)) {
     if (timer) clearInterval(timer);
     timer = checkTimer();
@@ -225,3 +226,7 @@ labelDate.textContent = new Intl.DateTimeFormat(
   navigator.language,
   option
 ).format(now);
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  document.querySelector(".btn_help").click();
+});
