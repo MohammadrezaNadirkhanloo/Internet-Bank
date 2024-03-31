@@ -110,7 +110,7 @@ const checkSum = function (data) {
   sumINTEREST.textContent = `${checkINTEREST.toFixed(2)} €`;
 };
 const checkTimer = function () {
-  let time = 10;
+  let time = 300;
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(Math.trunc(time % 60)).padStart(2, 0);
