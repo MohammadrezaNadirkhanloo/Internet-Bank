@@ -110,19 +110,19 @@ const checkSum = function (data) {
   sumINTEREST.textContent = `${checkINTEREST.toFixed(2)} €`;
 };
 const checkTimer = function () {
-  let time = 300;
+  let time = 10;
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(Math.trunc(time % 60)).padStart(2, 0);
 
     Timer.textContent = `${min}:${sec}`;
-    time--;
     if (time === 0) {
       clearInterval(timer);
       dataBox.classList.add("d-none");
       textLabel.classList.remove("f_Ballistic");
       textLabel.textContent = "Login in to get started";
     }
+    time--;
   };
   tick();
   const timer = setInterval(tick, 1000);
