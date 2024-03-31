@@ -1,4 +1,4 @@
-# Bankist
+# Internet-Bank
 Hello, welcome! 
 
 This project is made using HTML, CSS, and JavaScript languages, and also utilizes Bootstrap 5 classes. 
