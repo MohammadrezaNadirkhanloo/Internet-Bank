@@ -155,15 +155,15 @@ btnLogin.addEventListener("click", function (e) {
 
 btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
-  const many = Math.floor(inputrequest.value);
+  const many = Math.floor(+inputAmount.value);
 
   const receive = accounts.find(
     (item) => item.username === inputTransfer.value
   );
   if (receive && userName.balance >= many) {
-    userName.movements.push(Number(-many));
+    userName.movements.push(-many);
     updateUI(userName);
-    receive.movements.push(Number(many));
+    receive.movements.push(many);
     inputTransfer.value = inputAmount.value = "";
     clearInterval(timer);
     timer = checkTimer();
